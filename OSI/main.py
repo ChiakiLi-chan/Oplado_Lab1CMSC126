@@ -53,7 +53,7 @@ class OSISimulation:
         frame = self.data_link.create_frame(packet, dest_ip)
 
         print("\n[Physical Layer] Transmitting raw data...")
-        transmitted_data = self.physical.send(frame)  # No need for client.start()
+        transmitted_data = self.physical.send(frame)  
 
         print("\n[Physical Layer] Simulated transmission complete!\n")
         return transmitted_data  # Pass to receiver
@@ -62,7 +62,7 @@ class OSISimulation:
         print("\nWe have reached the client side of this OSI simulation.")
 
         print("\n[Physical Layer] Receiving raw data...")
-        frame = self.physical.receive(transmitted_data)  # Use `receive()` instead of `start()`
+        frame = self.physical.receive(transmitted_data)  
 
         if frame is None:
             print("[ERROR] No frame received at Physical Layer!")
@@ -80,7 +80,7 @@ class OSISimulation:
         print(f"[DEBUG] Packet received: {packet}")
 
         print("\n[Network Layer] Extracting payload from IP packet...")
-        _, _, segment = self.network.parse_packet(packet)  # Extract only the payload
+        _, _, segment = self.network.parse_packet(packet)  
 
         if segment is None:
             print("[ERROR] Network Layer failed to extract a valid segment!")
@@ -115,7 +115,7 @@ class OSISimulation:
 
         print(f"[DEBUG] Request received: {request}")
 
-        return request  # Ensure function returns correctly
+        return request  
 
 
 
